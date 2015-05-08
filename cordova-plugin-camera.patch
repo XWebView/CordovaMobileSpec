@@ -1,0 +1,24 @@
+diff -up a/cordova-plugin-camera/CDVCamera.m b/cordova-plugin-camera/CDVCamera.m
+--- a/cordova-plugin-camera/CDVCamera.m	2015-05-10 01:51:47.000000000 +0800
++++ b/cordova-plugin-camera/CDVCamera.m	2015-05-10 01:55:56.000000000 +0800
+@@ -20,7 +20,6 @@
+ #import "CDVCamera.h"
+ #import "CDVJpegHeaderWriter.h"
+ #import "UIImage+CropScaleOrientation.h"
+-#import <Cordova/NSData+Base64.h>
+ #import <ImageIO/CGImageProperties.h>
+ #import <AssetsLibrary/ALAssetRepresentation.h>
+ #import <AssetsLibrary/AssetsLibrary.h>
+@@ -35,11 +34,7 @@
+ static NSSet* org_apache_cordova_validArrowDirections;
+ 
+ static NSString* toBase64(NSData* data) {
+-    SEL s1 = NSSelectorFromString(@"cdv_base64EncodedString");
+-    SEL s2 = NSSelectorFromString(@"base64EncodedString");
+-    SEL realSel = [data respondsToSelector:s1] ? s1 : s2;
+-    NSString* (*func)(id, SEL) = (void *)[data methodForSelector:realSel];
+-    return func(data, realSel);
++    return [data base64EncodedStringWithOptions:0];
+ }
+ 
+ @implementation CDVPictureOptions
