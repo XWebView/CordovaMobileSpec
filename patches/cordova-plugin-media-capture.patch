@@ -1,0 +1,12 @@
+diff -u a/cordova-plugin-media-capture/CDVCapture.m b/cordova-plugin-media-capture/CDVCapture.m
+--- a/cordova-plugin-media-capture/CDVCapture.m	2015-05-10 06:03:14.000000000 +0800
++++ b/cordova-plugin-media-capture/CDVCapture.m	2015-05-11 23:31:52.000000000 +0800
+@@ -31,7 +31,7 @@
+ @implementation NSBundle (PluginExtensions)
+ 
+ + (NSBundle*) pluginBundle:(CDVPlugin*)plugin {
+-    NSBundle* bundle = [NSBundle bundleWithPath: [[NSBundle mainBundle] pathForResource:NSStringFromClass([plugin class]) ofType: @"bundle"]];
++    NSBundle* bundle = [NSBundle bundleWithPath: [[NSBundle bundleForClass:[plugin class]] pathForResource:NSStringFromClass([plugin class]) ofType: @"bundle"]];
+     return bundle;
+ }
+ @end

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 name="CordovaPlugins"
-
+wwwroot="cordova-mobile-spec/www"
 plugins="\
     cordova-plugin-test-framework \
     cordova-plugin-battery-status\
@@ -24,11 +24,6 @@ plugins="\
     cordova-plugin-statusbar \
     cordova-plugin-vibration"
 
-patches="\
-    cordova-plugin-camera \
-    cordova-plugin-file"
-
-wwwroot="cordova-mobile-spec/www"
 
 # Create project
 test "${0%/*}" != "$0" && cd "${0%/*}"
@@ -46,8 +41,8 @@ done
 cd ..
 
 # Apply local patches
-for p in $patches; do
-    patch -d $name/platforms/ios/$name/Plugins -p1 < ../$p.patch
+for p in ../patches/*.patch; do
+    patch -d $name/platforms/ios/$name/Plugins -p1 < $p
 done
 
 # Prepare web assets

@@ -1,0 +1,12 @@
+diff -u a/cordova-plugin-dialogs/CDVNotification.m b/cordova-plugin-dialogs/CDVNotification.m
+--- a/cordova-plugin-dialogs/CDVNotification.m	2015-05-10 06:02:28.000000000 +0800
++++ b/cordova-plugin-dialogs/CDVNotification.m	2015-05-11 23:31:52.000000000 +0800
+@@ -120,7 +120,7 @@
+ static void playBeep(int count) {
+     SystemSoundID completeSound;
+     NSInteger cbDataCount = count;
+-    NSURL* audioPath = [[NSBundle mainBundle] URLForResource:@"CDVNotification.bundle/beep" withExtension:@"wav"];
++    NSURL* audioPath = [[NSBundle bundleForClass:[CDVNotification class]] URLForResource:@"CDVNotification.bundle/beep" withExtension:@"wav"];
+     #if __has_feature(objc_arc)
+         AudioServicesCreateSystemSoundID((__bridge CFURLRef)audioPath, &completeSound);
+     #else
