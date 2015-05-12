@@ -38,11 +38,17 @@ for p in $plugins; do
     cordova plugin add $p
     test -d plugins/$p/tests && cordova plugin add plugins/$p/tests
 done
+cordova plugin add ../../cordova-mobile-spec/cordova-plugin-echo
+cordova plugin add ../../cordova-mobile-spec/cordova-plugin-mobilespec-tests
+#cordova plugin add ../../cordova-mobile-spec/cordova-plugin-whitelist
 cd ..
 
 # Apply local patches
 for p in ../patches/*.patch; do
     patch -d $name/platforms/ios/$name/Plugins -p1 < $p
+done
+for p in ../patches/www/*.patch; do
+    patch -d $name/platforms/ios/www/plugins -p1 < $p
 done
 
 # Prepare web assets
