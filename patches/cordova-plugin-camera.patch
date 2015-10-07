@@ -1,6 +1,6 @@
 diff -up a/cordova-plugin-camera/CDVCamera.m b/cordova-plugin-camera/CDVCamera.m
---- a/cordova-plugin-camera/CDVCamera.m	2015-05-10 01:51:47.000000000 +0800
-+++ b/cordova-plugin-camera/CDVCamera.m	2015-05-10 01:55:56.000000000 +0800
+--- a/cordova-plugin-camera/CDVCamera.m	2015-10-06 05:12:58.000000000 +0800
++++ b/cordova-plugin-camera/CDVCamera.m	2015-10-06 05:28:32.000000000 +0800
 @@ -20,7 +20,6 @@
  #import "CDVCamera.h"
  #import "CDVJpegHeaderWriter.h"
@@ -9,7 +9,7 @@ diff -up a/cordova-plugin-camera/CDVCamera.m b/cordova-plugin-camera/CDVCamera.m
  #import <ImageIO/CGImageProperties.h>
  #import <AssetsLibrary/ALAssetRepresentation.h>
  #import <AssetsLibrary/AssetsLibrary.h>
-@@ -35,11 +34,7 @@
+@@ -36,11 +35,7 @@
  static NSSet* org_apache_cordova_validArrowDirections;
  
  static NSString* toBase64(NSData* data) {

@@ -42,10 +42,6 @@
     }
 }
 
-- (BOOL)prefersStatusBarHidden {
-    return YES;
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -53,6 +49,7 @@
 
 - (NSString *)javascriptStub:(NSString *)stub {
     stub = [super javascriptStub:stub];
+    // Forbid to inject cordova-incl.js file
     return [stub stringByAppendingString:@"window._doNotWriteCordovaScript = true;\n"];
 }
 

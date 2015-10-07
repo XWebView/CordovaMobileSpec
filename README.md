@@ -10,6 +10,4 @@ Before you build the application, please run:
 ## Known issues
 
 Some plugin tests fail.
- * WebSQL (deprecated in WKWebView)
- * statusbar
- * whitelist
+ * WebSQL (obsoleted in WKWebView)

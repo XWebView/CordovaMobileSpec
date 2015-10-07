@@ -29,18 +29,18 @@ plugins="\
 test "${0%/*}" != "$0" && cd "${0%/*}"
 mkdir -p Build/www
 cd Build
-cordova create $name com.github.xwebview.cordova.plugins $name --copy-from=www
+cordova create $name org.xwebview.cordova.plugins $name --copy-from=www
 
 # Add platform and plugins
 cd $name
-cordova platform add https://github.com/xwebview/cordova-xwv.git#4.0.x
+cordova platform add https://github.com/xwebview/cordova-xwv.git
 for p in $plugins; do
     cordova plugin add $p
     test -d plugins/$p/tests && cordova plugin add plugins/$p/tests
 done
 cordova plugin add ../../cordova-mobile-spec/cordova-plugin-echo
 cordova plugin add ../../cordova-mobile-spec/cordova-plugin-mobilespec-tests
-#cordova plugin add ../../cordova-mobile-spec/cordova-plugin-whitelist
+cordova plugin add ../../cordova-mobile-spec/cordova-plugin-whitelist
 cd ..
 
 # Apply local patches

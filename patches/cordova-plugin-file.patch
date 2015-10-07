@@ -12,20 +12,3 @@ diff -u a/cordova-plugin-file/CDVFile.h b/cordova-plugin-file/CDVFile.h
  
  enum CDVFileError {
      NO_ERROR = 0,
-diff -u a/cordova-plugin-file/CDVFile.m b/cordova-plugin-file/CDVFile.m
---- a/cordova-plugin-file/CDVFile.m	2015-05-10 06:02:34.000000000 +0800
-+++ b/cordova-plugin-file/CDVFile.m	2015-05-10 06:15:31.000000000 +0800
-@@ -878,12 +878,7 @@
-         [fs readFileAtURL:localURI start:start end:end callback:^(NSData* data, NSString* mimeType, CDVFileError errorCode) {
-             CDVPluginResult* result = nil;
-             if (data != nil) {
--                SEL selector = NSSelectorFromString(@"cdv_base64EncodedString");
--                if (![data respondsToSelector:selector]) {
--                    selector = NSSelectorFromString(@"base64EncodedString");
--                }
--                id (*func)(id, SEL) = (void *)[data methodForSelector:selector];
--                NSString* b64Str = func(data, selector);
-+                NSString* b64Str = [data base64EncodedStringWithOptions:0];
-                 NSString* output = [NSString stringWithFormat:@"data:%@;base64,%@", mimeType, b64Str];
-                 result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:output];
-             } else {
